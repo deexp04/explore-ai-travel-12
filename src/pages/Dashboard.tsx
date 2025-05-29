@@ -24,9 +24,6 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="icon" onClick={logout}>
-              <LogOut className="h-4 w-4" />
-            </Button>
               <Button onClick={logout} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                 <LogOut className="h-4 w-4" /> Logout
               </Button>
@@ -44,13 +41,10 @@ const Dashboard = () => {
             <CardTitle className="text-2xl font-bold">
               Welcome, {user?.name}!
             </CardTitle>
-            <Button variant="outline" size="icon" onClick={logout}>
-              <LogOut className="h-4 w-4" />
-            </Button>
           </CardHeader>
           <CardContent>
             <CardDescription>
-              Explore the TravelAI dashboard and start planning your next adventure.
+              Explore the SyncAgents dashboard and start planning your next adventure.
             </CardDescription>
           </CardContent>
         </Card>
@@ -64,7 +58,7 @@ const Dashboard = () => {
             </TabsTrigger>
             <TabsTrigger value="planning">
               <Plane className="mr-2 h-4 w-4" />
-              Planning
+              Bookings
             </TabsTrigger>
             <TabsTrigger value="settings">
               <Settings className="mr-2 h-4 w-4" />
@@ -165,25 +159,6 @@ const Dashboard = () => {
       </div>
     </div>
 
-     
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-6">
-        <div className="container mx-auto">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  SyncAgents
-                </span>
-              </div>
-            </div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Pioneering the future of intelligent travel planning through advanced AI agent networks and innovation.
-            </p>
-          </div>
-        </div>
-      </footer>
 
      
     </div>
