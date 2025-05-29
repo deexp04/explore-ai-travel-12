@@ -48,14 +48,14 @@ const Login = () => {
     try {
       await login('demo@travelai.com', 'demo123');
       toast({
-        title: "Demo Login Successful!",
-        description: "Welcome to TravelAI Demo",
+        title: "Login Successful!",
+        description: "Welcome to SyncAgents",
       });
       navigate('/dashboard');
     } catch (error) {
       toast({
         title: "Error",
-        description: "Demo login failed",
+        description: "Login failed",
         variant: "destructive",
       });
     }
