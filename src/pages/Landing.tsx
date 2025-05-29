@@ -44,26 +44,26 @@ const Landing = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+{/*               <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
                 <MessageSquare className="w-6 h-6 text-white" />
-              </div>
+              </div> */}
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  TravelAI
+                  SyncAgents
                 </span>
-                <div className="text-xs text-gray-500 font-medium">BY FETCH.AI</div>
+{/*                 <div className="text-xs text-gray-500 font-medium">BY FETCH.AI</div> */}
               </div>
             </div>
-            <nav className="hidden md:flex items-center space-x-8">
+{/*             <nav className="hidden md:flex items-center space-x-8">
               <Link to="/features" className="text-gray-600 hover:text-blue-600 font-medium">Features</Link>
               <Link to="/about" className="text-gray-600 hover:text-blue-600 font-medium">About</Link>
               <Link to="/contact" className="text-gray-600 hover:text-blue-600 font-medium">Contact</Link>
-            </nav>
+            </nav> */}
             <div className="flex items-center space-x-3">
-              <Button variant="ghost" onClick={() => navigate('/login')} className="text-gray-600">
+{/*               <Button variant="ghost" onClick={() => navigate('/login')} className="text-gray-600">
                 Sign In
-              </Button>
-              <Button onClick={() => navigate('/register')} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+              </Button> */}
+              <Button onClick={() => navigate('/login')} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                 Get Started
               </Button>
             </div>
@@ -79,14 +79,14 @@ const Landing = () => {
             <div className="max-w-2xl">
               <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full text-blue-600 text-sm font-medium mb-6">
                 <Zap className="w-4 h-4 mr-2" />
-                Powered by AI Agents
+                Powered by FetchAI
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                TravelAI
+                SyncAgents
                 <br />
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+{/*                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Innovation Lab
-                </span>
+                </span> */}
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 We lead the way in advancing intelligent travel planning through AI agent networks, 
@@ -96,19 +96,19 @@ const Landing = () => {
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg px-8 py-4 h-auto"
-                  onClick={() => navigate('/register')}
+                  onClick={() => navigate('/login')}
                 >
                   Start Planning Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button 
+{/*                 <Button 
                   size="lg" 
                   variant="outline" 
                   className="text-lg px-8 py-4 h-auto border-2"
                   onClick={() => navigate('/login')}
                 >
                   Try Demo
-                </Button>
+                </Button> */}
               </div>
             </div>
 
@@ -178,7 +178,7 @@ const Landing = () => {
           <div className="text-center mt-12">
             <Button 
               size="lg" 
-              onClick={() => navigate('/register')}
+              onClick={() => navigate('/login')}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 h-auto text-lg"
             >
               Unlock Full Features
@@ -199,7 +199,7 @@ const Landing = () => {
               Areas of Innovation
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our platform connects multiple specialized agents to revolutionize how you plan and experience travel
+              Our platform connects multiple specialized agents to revolutionize your planning
             </p>
           </div>
           
@@ -223,54 +223,21 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto relative z-10">
-          <div className="text-center text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready for the Future of Travel?
-            </h2>
-            <p className="text-xl mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
-              Join the innovation lab and experience personalized travel planning with real-time budget tracking, 
-              intelligent recommendations, and seamless agent coordination.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                size="lg" 
-                variant="secondary" 
-                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 h-auto text-lg font-semibold"
-                onClick={() => navigate('/register')}
-              >
-                Start Your Journey
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 h-auto text-lg"
-                onClick={() => navigate('/login')}
-              >
-                Explore Demo
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16 px-6">
         <div className="container mx-auto">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+{/*               <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
                 <MessageSquare className="w-7 h-7 text-white" />
-              </div>
+              </div> */}
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  TravelAI
+                  SyncAgents
                 </span>
-                <div className="text-xs text-gray-400 font-medium">BY FETCH.AI</div>
+{/*                 <div className="text-xs text-gray-400 font-medium">BY FETCH.AI</div> */}
               </div>
             </div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
