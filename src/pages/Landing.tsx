@@ -142,9 +142,7 @@ const Landing = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Ready to Start Planning?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Click the chat icon to get instant travel suggestions and advice. No login required for basic features!
-            </p>
+
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
@@ -155,9 +153,7 @@ const Landing = () => {
                 Get Full Features
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <p className="text-gray-600 text-center sm:text-left max-w-md">
-                Or try the chat assistant for free travel suggestions
-              </p>
+
             </div>
           </div>
           
