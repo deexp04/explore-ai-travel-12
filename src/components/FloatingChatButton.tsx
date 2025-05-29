@@ -16,7 +16,7 @@ const FloatingChatButton = () => {
   return (
     <>
       {/* Floating Chat Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+{/*       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(true)}
           size="lg"
@@ -24,7 +24,7 @@ const FloatingChatButton = () => {
         >
           <MessageSquare className="w-8 h-8 text-white" />
         </Button>
-      </div>
+      </div> */}
 
       {/* Chat Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
