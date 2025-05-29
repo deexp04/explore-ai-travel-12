@@ -40,7 +40,7 @@ const Dashboard = () => {
         <div className="container mx-auto px-4 max-w-6xl">
           
           {/* Header Section */}
-{/*           <Card className="mb-8 shadow-xl border-0">
+          <Card className="mb-8 shadow-xl border-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-xl sm:text-2xl font-bold truncate">
                 Welcome, {user?.name}!
@@ -51,7 +51,7 @@ const Dashboard = () => {
                 Explore the SyncAgents dashboard and start planning your next adventure.
               </CardDescription>
             </CardContent>
-          </Card> */}
+          </Card>
 
           {/* Tabs Section */}
           <Tabs defaultValue="chat" className="w-full mb-8">
@@ -71,7 +71,7 @@ const Dashboard = () => {
             </TabsList>
             
             <TabsContent value="chat" className="mt-6">
-              <Card className="min-h-0">
+              <Card className="min-h-screen">
                 <CardContent className="p-6">
                   <ChatInterface />
                 </CardContent>
