@@ -155,7 +155,7 @@ const ChatInterface = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-300px)] flex flex-col min-h-0">
+    <div className="h-[calc(100vh-300px)] flex flex-col min-h-screen">
       <Card className="flex-1 flex flex-col min-h-0">
         <CardHeader className="pb-3 flex-shrink-0">
           <CardTitle className="flex items-center space-x-2 min-w-0">
