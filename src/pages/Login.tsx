@@ -84,7 +84,8 @@ const Login = () => {
       </header>
 
 
-       <div className="w-full max-w-md flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-md flex items-center justify-center p-4">
 
         <Card className="shadow-xl border-0">
           <CardHeader className="text-center">
@@ -148,17 +149,18 @@ const Login = () => {
               </Button>
             </form>
             
-            <div className="mt-6 text-center">
+{/*             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
                 <Link to="/register" className="text-blue-600 hover:underline">
                   Sign up
                 </Link>
               </p>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </div>
+    </div>
 
 
 
