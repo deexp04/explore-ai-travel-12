@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { MessageSquare, Plane, Shield, Zap, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import GuestChatInterface from '@/components/GuestChatInterface';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -90,8 +92,39 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Chat Demo Section */}
       <section className="py-20 px-4 bg-white/50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Try Our AI Assistant Now
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Get instant travel suggestions and advice. No login required for basic features!
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <GuestChatInterface />
+          </div>
+          
+          <div className="text-center mt-8">
+            <Button 
+              size="lg" 
+              onClick={() => navigate('/register')}
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              Sign Up for Full Features
+            </Button>
+            <p className="text-sm text-gray-600 mt-2">
+              Unlock personalized recommendations, trip history, and budget tracking
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -123,15 +156,15 @@ const Landing = () => {
       </section>
 
       {/* Demo Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white/50">
         <div className="container mx-auto">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              See TravelAI in Action
+              Ready for Personalized Planning?
             </h2>
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              "Plan a 4-day Tokyo trip under $1200" - Watch our AI coordinate with specialized agents 
-              to create your perfect itinerary while monitoring your budget in real-time.
+              Sign up to unlock advanced features like "Plan a 4-day Tokyo trip under $1200" with real-time budget tracking, 
+              trip history, and coordinated agent responses.
             </p>
             <Button 
               size="lg" 
@@ -139,7 +172,7 @@ const Landing = () => {
               className="bg-white text-blue-600 hover:bg-gray-100"
               onClick={() => navigate('/register')}
             >
-              Try It Free
+              Get Full Access
             </Button>
           </div>
         </div>
