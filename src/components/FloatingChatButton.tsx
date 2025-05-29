@@ -29,11 +29,11 @@ const FloatingChatButton = () => {
       {/* Chat Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-2xl w-[95vw] h-[80vh] max-h-[600px] p-0 flex flex-col">
-{/*           <DialogHeader className="p-6 pb-0 flex-shrink-0">
+           <DialogHeader className="p-6 pb-0 flex-shrink-0">
             <DialogTitle className="flex items-center justify-between">
-              <span>Chat Assistant</span>
+{/*               <span>Chat Assistant</span> */}
             </DialogTitle>
-          </DialogHeader> */}
+          </DialogHeader> 
           <div className="px-6 pb-6 flex-1 min-h-0">
             <GuestChatInterface />
           </div>
