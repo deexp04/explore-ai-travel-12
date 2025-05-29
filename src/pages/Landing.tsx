@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 import { MessageSquare, Plane, Shield, Zap, Users, ArrowRight, Globe, Target, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import GuestChatInterface from '@/components/GuestChatInterface';
+import FloatingChatButton from '@/components/FloatingChatButton';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -44,25 +43,13 @@ const Landing = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-{/*               <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <MessageSquare className="w-6 h-6 text-white" />
-              </div> */}
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   SyncAgents
                 </span>
-{/*                 <div className="text-xs text-gray-500 font-medium">BY FETCH.AI</div> */}
               </div>
             </div>
-{/*             <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/features" className="text-gray-600 hover:text-blue-600 font-medium">Features</Link>
-              <Link to="/about" className="text-gray-600 hover:text-blue-600 font-medium">About</Link>
-              <Link to="/contact" className="text-gray-600 hover:text-blue-600 font-medium">Contact</Link>
-            </nav> */}
             <div className="flex items-center space-x-3">
-{/*               <Button variant="ghost" onClick={() => navigate('/login')} className="text-gray-600">
-                Sign In
-              </Button> */}
               <Button onClick={() => navigate('/login')} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                 Get Started
               </Button>
@@ -84,9 +71,6 @@ const Landing = () => {
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 SyncAgents
                 <br />
-{/*                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Innovation Lab
-                </span> */}
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 We lead the way in advancing intelligent travel planning through AI agent networks, 
@@ -101,14 +85,6 @@ const Landing = () => {
                   Start Planning Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-{/*                 <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-lg px-8 py-4 h-auto border-2"
-                  onClick={() => navigate('/login')}
-                >
-                  Try Demo
-                </Button> */}
               </div>
             </div>
 
@@ -159,34 +135,74 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Chat Demo Section */}
+      {/* Call to Action Section - replacing chat demo */}
       <section className="py-20 px-6 bg-white/70">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Experience AI Travel Planning
+              Ready to Start Planning?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get instant travel suggestions and advice. No login required for basic features!
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Click the chat icon to get instant travel suggestions and advice. No login required for basic features!
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                onClick={() => navigate('/login')}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 h-auto text-lg"
+              >
+                Get Full Features
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <p className="text-gray-600 text-center sm:text-left max-w-md">
+                Or try the chat assistant for free travel suggestions
+              </p>
+            </div>
           </div>
           
-          <div className="max-w-5xl mx-auto">
-            <GuestChatInterface />
-          </div>
-          
-          <div className="text-center mt-12">
-            <Button 
-              size="lg" 
-              onClick={() => navigate('/login')}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 h-auto text-lg"
-            >
-              Unlock Full Features
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <p className="text-gray-600 mt-4 max-w-md mx-auto">
-              Get personalized recommendations, trip history, budget tracking, and coordinated agent responses
-            </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
+              <CardHeader>
+                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <MessageSquare className="w-8 h-8" />
+                </div>
+                <CardTitle>Free Chat Assistant</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Get instant travel suggestions and general advice without signing up
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
+              <CardHeader>
+                <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8" />
+                </div>
+                <CardTitle>Personalized Experience</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Sign up for detailed itineraries, trip history, and budget tracking
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
+              <CardHeader>
+                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8" />
+                </div>
+                <CardTitle>Smart Agent Network</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Access coordinated AI agents for bookings, budget monitoring, and alerts
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -230,14 +246,10 @@ const Landing = () => {
         <div className="container mx-auto">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-6">
-{/*               <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <MessageSquare className="w-7 h-7 text-white" />
-              </div> */}
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   SyncAgents
                 </span>
-{/*                 <div className="text-xs text-gray-400 font-medium">BY FETCH.AI</div> */}
               </div>
             </div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -246,6 +258,9 @@ const Landing = () => {
           </div>
         </div>
       </footer>
+
+      {/* Floating Chat Button */}
+      <FloatingChatButton />
     </div>
   );
 };
