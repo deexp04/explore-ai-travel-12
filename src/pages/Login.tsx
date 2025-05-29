@@ -85,9 +85,9 @@ const Login = () => {
 
 
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl flex items-center justify-center p-4">
+      <div className="w-full max-w-3xl flex items-center justify-center p-4">
 
-        <Card className="shadow-xl border-0">
+        <Card className="shadow-xl border-0 w-full">
           <CardHeader className="text-center">
             <CardTitle>Sign In</CardTitle>
             <CardDescription>
