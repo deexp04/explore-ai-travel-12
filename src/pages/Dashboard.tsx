@@ -11,7 +11,31 @@ const Dashboard = () => {
   const { user, logout } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 py-6">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      {/* Header */}
+      <header className="bg-white/90 backdrop-blur-md border-b border-indigo-100 sticky top-0 z-50">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  SyncAgents
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Button variant="outline" size="icon" onClick={logout}>
+              <LogOut className="h-4 w-4" />
+            </Button>
+              <Button onClick={logout} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                <LogOut className="h-4 w-4" /> Logout
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 py-6">
       <div className="container mx-auto px-4 max-w-4xl">
         
         {/* Header Section */}
@@ -50,10 +74,10 @@ const Dashboard = () => {
           <TabsContent value="chat" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>AI Travel Assistant</CardTitle>
+{/*                 <CardTitle>AI Travel Assistant</CardTitle>
                 <CardDescription>
                   Get personalized travel recommendations and plan your trips with AI.
-                </CardDescription>
+                </CardDescription> */}
               </CardHeader>
               <CardContent>
                 <ChatInterface />
@@ -140,6 +164,32 @@ const Dashboard = () => {
         </Tabs>
       </div>
     </div>
+
+     
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16 px-6">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-3 mb-6">
+              <div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  SyncAgents
+                </span>
+              </div>
+            </div>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Pioneering the future of intelligent travel planning through advanced AI agent networks and innovation.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+     
+    </div>
+
+    
+   
   );
 };
 
