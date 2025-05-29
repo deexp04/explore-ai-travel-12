@@ -31,10 +31,10 @@ const FloatingChatButton = () => {
         <DialogContent className="max-w-4xl h-[80vh] p-0">
           <DialogHeader className="p-6 pb-0">
             <DialogTitle className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
+{/*               <div className="flex items-center space-x-2">
                 <MessageSquare className="w-6 h-6 text-blue-600" />
                 <span>SyncAgents</span>
-              </div>
+              </div> */}
               <Button 
                 variant="ghost" 
                 size="sm"
