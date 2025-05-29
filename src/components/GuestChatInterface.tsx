@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { MessageSquare, Send, Bot, User, LogIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -124,7 +125,6 @@ const GuestChatInterface = () => {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-{/*               <MessageSquare className="w-5 h-5 text-blue-600" /> */}
               <span>SyncAgents</span>
               <Badge variant="outline" className="ml-2 text-blue-600 border-blue-200 mt-1">
                 Guest Mode
@@ -134,70 +134,73 @@ const GuestChatInterface = () => {
               variant="outline" 
               size="sm"
               onClick={() => navigate('/login')}
-              className="text-blue-600 hover:bg-blue-50"
+              className="text-blue-600 hover:bg-blue-50 flex-shrink-0"
             >
               <LogIn className="w-4 h-4 mr-2" />
-              Login for Full Features
+              <span className="hidden sm:inline">Login for Full Features</span>
+              <span className="sm:hidden">Login</span>
             </Button>
           </CardTitle>
         </CardHeader>
         
         <CardContent className="flex-1 flex flex-col p-0">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div className={`flex max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'} space-x-2`}>
-                  <Avatar className="w-8 h-8 flex-shrink-0">
-                    <AvatarFallback className={message.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-600 text-white'}>
-                      {message.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-                    </AvatarFallback>
-                  </Avatar>
-                  
-                  <div className={`px-4 py-2 rounded-lg ${
-                    message.sender === 'user' 
-                      ? 'bg-blue-600 text-white' 
-                      : 'bg-gray-100 text-gray-900'
-                  }`}>
-                    {message.agentInfo && (
-                      <div className="text-xs opacity-75 mb-1">
-                        <Badge variant="outline" className="text-xs">
-                          {message.agentInfo.agentType}: {message.agentInfo.action}
-                        </Badge>
+          <ScrollArea className="flex-1 px-4">
+            <div className="space-y-4 py-4">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`flex max-w-[85%] sm:max-w-[75%] ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'} gap-2`}>
+                    <Avatar className="w-8 h-8 flex-shrink-0">
+                      <AvatarFallback className={message.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-600 text-white'}>
+                        {message.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                      </AvatarFallback>
+                    </Avatar>
+                    
+                    <div className={`px-4 py-2 rounded-lg break-words ${
+                      message.sender === 'user' 
+                        ? 'bg-blue-600 text-white' 
+                        : 'bg-gray-100 text-gray-900'
+                    }`}>
+                      {message.agentInfo && (
+                        <div className="text-xs opacity-75 mb-1">
+                          <Badge variant="outline" className="text-xs">
+                            {message.agentInfo.agentType}: {message.agentInfo.action}
+                          </Badge>
+                        </div>
+                      )}
+                      <div className="whitespace-pre-wrap break-words">{message.content}</div>
+                      <div className={`text-xs mt-1 opacity-75`}>
+                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </div>
-                    )}
-                    <div className="whitespace-pre-wrap">{message.content}</div>
-                    <div className={`text-xs mt-1 opacity-75`}>
-                      {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-            
-            {isTyping && (
-              <div className="flex justify-start">
-                <div className="flex space-x-2">
-                  <Avatar className="w-8 h-8">
-                    <AvatarFallback className="bg-gray-600 text-white">
-                      <Bot className="w-4 h-4" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              ))}
+              
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="flex gap-2">
+                    <Avatar className="w-8 h-8">
+                      <AvatarFallback className="bg-gray-600 text-white">
+                        <Bot className="w-4 h-4" />
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          </ScrollArea>
           
           {/* Input */}
           <div className="border-t p-4">
@@ -207,17 +210,17 @@ const GuestChatInterface = () => {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about travel destinations, tips, or general advice..."
-                className="flex-1"
+                className="flex-1 min-w-0"
               />
               <Button 
                 onClick={handleSendMessage}
                 disabled={!inputMessage.trim() || isTyping}
-                className="px-3"
+                className="px-3 flex-shrink-0"
               >
                 <Send className="w-4 h-4" />
               </Button>
             </div>
-            <div className="text-xs text-gray-500 mt-2">
+            <div className="text-xs text-gray-500 mt-2 break-words">
               💡 Sign up for personalized features: trip history, budget tracking, and agent coordination
             </div>
           </div>
