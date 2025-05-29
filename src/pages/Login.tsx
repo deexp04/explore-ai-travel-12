@@ -62,24 +62,35 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-              <MessageSquare className="w-6 h-6 text-white" />
+     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      {/* Header */}
+      <header className="bg-white/90 backdrop-blur-md border-b border-indigo-100 sticky top-0 z-50">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  SyncAgents
+                </span>
+              </div>
             </div>
-            <span className="text-2xl font-bold text-gray-900">TravelAI</span>
+            <div className="flex items-center space-x-3">
+              <Button onClick={() => navigate('/login')} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                Get Started
+              </Button>
+            </div>
           </div>
-          <p className="text-gray-600">Welcome back to your AI travel assistant</p>
         </div>
+      </header>
+
+
+       <div className="w-full max-w-md flex items-center justify-center p-4">
 
         <Card className="shadow-xl border-0">
           <CardHeader className="text-center">
             <CardTitle>Sign In</CardTitle>
             <CardDescription>
-              Enter your credentials to access your dashboard
+              Login for flexible travel planning
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -148,7 +159,30 @@ const Login = () => {
           </CardContent>
         </Card>
       </div>
+
+
+
+
+
+
+        <footer className="bg-gray-900 text-white py-16 px-6">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-3 mb-6">
+              <div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  SyncAgents
+                </span>
+              </div>
+            </div>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Pioneering the future of intelligent travel planning through advanced AI agent networks and innovation.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
+   
   );
 };
 
