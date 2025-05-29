@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, X } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -28,24 +28,13 @@ const FloatingChatButton = () => {
 
       {/* Chat Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl h-[80vh] p-0">
-          <DialogHeader className="p-6 pb-0">
+        <DialogContent className="max-w-2xl w-[95vw] h-[80vh] max-h-[600px] p-0 flex flex-col">
+          <DialogHeader className="p-6 pb-0 flex-shrink-0">
             <DialogTitle className="flex items-center justify-between">
-{/*               <div className="flex items-center space-x-2">
-                <MessageSquare className="w-6 h-6 text-blue-600" />
-                <span>SyncAgents</span>
-              </div> */}
-{/*               <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={() => setIsOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                 <X className="w-5 h-5" /> 
-              </Button>  */}
+              <span>Chat Assistant</span>
             </DialogTitle>
           </DialogHeader>
-          <div className="px-6 pb-6 h-full">
+          <div className="px-6 pb-6 flex-1 min-h-0">
             <GuestChatInterface />
           </div>
         </DialogContent>
