@@ -167,10 +167,10 @@ const ChatInterface = () => {
       <Card className="flex-1 flex flex-col">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center space-x-2">
-            <MessageSquare className="w-5 h-5 text-blue-600" />
-            <span>AI Travel Assistant</span>
-            <Badge variant="secondary" className="ml-2 bg-green-100 text-green-700">
-              Connected to Agent Network
+{/*             <MessageSquare className="w-5 h-5 text-blue-600" /> */}
+            <span>SyncAgents</span>
+            <Badge variant="secondary" className="ml-2 bg-green-100 text-green-700 mt-1">
+              Connected to FetchAI Network
             </Badge>
           </CardTitle>
         </CardHeader>
