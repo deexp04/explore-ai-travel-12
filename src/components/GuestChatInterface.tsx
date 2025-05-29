@@ -124,9 +124,9 @@ const GuestChatInterface = () => {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <MessageSquare className="w-5 h-5 text-blue-600" />
-              <span>Try AI Travel Assistant</span>
-              <Badge variant="outline" className="ml-2 text-blue-600 border-blue-200">
+{/*               <MessageSquare className="w-5 h-5 text-blue-600" /> */}
+              <span>SyncAgents</span>
+              <Badge variant="outline" className="ml-2 text-blue-600 border-blue-200 mt-1">
                 Guest Mode
               </Badge>
             </div>
