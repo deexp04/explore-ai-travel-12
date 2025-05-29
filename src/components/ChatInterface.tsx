@@ -1,12 +1,11 @@
-
 import { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { useAuth } from '@/contexts/AuthContext';
-import { MessageSquare, Send, Bot, User } from 'lucide-react';
+import ChatMessage from './ChatMessage';
+import TypingIndicator from './TypingIndicator';
+import ChatInput from './ChatInput';
 
 interface ChatMessage {
   id: string;
@@ -155,104 +154,41 @@ const ChatInterface = () => {
     }];
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
-
   return (
-    <div className="h-[calc(100vh-200px)] flex flex-col">
-      <Card className="flex-1 flex flex-col">
-        <CardHeader className="pb-3">
-          <CardTitle className="flex items-center space-x-2">
-{/*             <MessageSquare className="w-5 h-5 text-blue-600" /> */}
-            <span>SyncAgents</span>
-            <Badge variant="secondary" className="ml-2 bg-green-100 text-green-700 mt-1">
+    <div className="h-[calc(100vh-300px)] flex flex-col min-h-0">
+      <Card className="flex-1 flex flex-col min-h-0">
+        <CardHeader className="pb-3 flex-shrink-0">
+          <CardTitle className="flex items-center space-x-2 min-w-0">
+            <span className="truncate">SyncAgents</span>
+            <Badge variant="secondary" className="ml-2 bg-green-100 text-green-700 mt-1 flex-shrink-0">
               Connected to FetchAI Network
             </Badge>
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="flex-1 flex flex-col p-0">
+        <CardContent className="flex-1 flex flex-col p-0 min-h-0">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div className={`flex max-w-[70%] ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'} space-x-2`}>
-                  <Avatar className="w-8 h-8 flex-shrink-0">
-                    <AvatarFallback className={message.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-600 text-white'}>
-                      {message.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-                    </AvatarFallback>
-                  </Avatar>
-                  
-                  <div className={`px-4 py-2 rounded-lg ${
-                    message.sender === 'user' 
-                      ? 'bg-blue-600 text-white' 
-                      : 'bg-gray-100 text-gray-900'
-                  }`}>
-                    {message.agentInfo && (
-                      <div className="text-xs opacity-75 mb-1">
-                        <Badge variant="outline" className="text-xs">
-                          {message.agentInfo.agentType}: {message.agentInfo.action}
-                        </Badge>
-                      </div>
-                    )}
-                    <div className="whitespace-pre-wrap">{message.content}</div>
-                    <div className={`text-xs mt-1 opacity-75`}>
-                      {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-            
-            {isTyping && (
-              <div className="flex justify-start">
-                <div className="flex space-x-2">
-                  <Avatar className="w-8 h-8">
-                    <AvatarFallback className="bg-gray-600 text-white">
-                      <Bot className="w-4 h-4" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
+          <ScrollArea className="flex-1 px-4 min-h-0">
+            <div className="space-y-4 py-4">
+              {messages.map((message) => (
+                <ChatMessage key={message.id} message={message} />
+              ))}
+              
+              {isTyping && <TypingIndicator />}
+              <div ref={messagesEndRef} />
+            </div>
+          </ScrollArea>
           
           {/* Input */}
-          <div className="border-t p-4">
-            <div className="flex space-x-2">
-              <Input
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask me to plan your trip, find deals, or check your budget..."
-                className="flex-1"
-              />
-              <Button 
-                onClick={handleSendMessage}
-                disabled={!inputMessage.trim() || isTyping}
-                className="px-3"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-            <div className="text-xs text-gray-500 mt-2">
-              Connected to FetchAI agents: Flight, Hotel, Finance, and Itinerary specialists
-            </div>
+          <div className="flex-shrink-0">
+            <ChatInput
+              inputMessage={inputMessage}
+              setInputMessage={setInputMessage}
+              onSendMessage={handleSendMessage}
+              isTyping={isTyping}
+              placeholder="Ask me to plan your trip, find deals, or check your budget..."
+              subtitle="Connected to FetchAI agents: Flight, Hotel, Finance, and Itinerary specialists"
+            />
           </div>
         </CardContent>
       </Card>
