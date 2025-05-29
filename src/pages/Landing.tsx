@@ -1,8 +1,9 @@
-
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
-import { MessageSquare, Airplane, DollarSign, Bell } from 'lucide-react';
+import { MessageSquare, Plane, Shield, Zap, Users, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -14,17 +15,17 @@ const Landing = () => {
       description: 'Chat with our intelligent assistant to plan your perfect trip'
     },
     {
-      icon: Airplane,
+      icon: Plane,
       title: 'Smart Booking',
       description: 'Discover the best flights, hotels, and activities through our agent network'
     },
     {
-      icon: DollarSign,
+      icon: Shield,
       title: 'Budget Monitoring',
       description: 'Real-time cost tracking with smart suggestions to stay within budget'
     },
     {
-      icon: Bell,
+      icon: Zap,
       title: 'Smart Alerts',
       description: 'Get notified about better deals and budget-friendly alternatives'
     }

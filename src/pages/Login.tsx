@@ -44,6 +44,23 @@ const Login = () => {
     }
   };
 
+  const handleDemoLogin = async () => {
+    try {
+      await login('demo@travelai.com', 'demo123');
+      toast({
+        title: "Demo Login Successful!",
+        description: "Welcome to TravelAI Demo",
+      });
+      navigate('/dashboard');
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Demo login failed",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -66,6 +83,28 @@ const Login = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
+            {/* Demo Login Button */}
+            <div className="mb-6">
+              <Button 
+                onClick={handleDemoLogin}
+                variant="outline"
+                className="w-full mb-4 border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700"
+                disabled={isLoading}
+              >
+                🚀 Try Demo Login
+              </Button>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <Label htmlFor="email">Email</Label>
