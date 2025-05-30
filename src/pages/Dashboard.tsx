@@ -79,7 +79,7 @@ const Dashboard = () => {
             </TabsContent>
             
             <TabsContent value="planning" className="mt-6">
-              <Card>
+{/*               <Card>
                 <CardHeader>
                   <CardTitle>Trip Planning</CardTitle>
                   <CardDescription>
@@ -140,11 +140,11 @@ const Dashboard = () => {
                     </Card>
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
             </TabsContent>
             
             <TabsContent value="settings" className="mt-6">
-              <Card>
+{/*               <Card>
                 <CardHeader>
                   <CardTitle>Settings</CardTitle>
                   <CardDescription>
@@ -154,7 +154,7 @@ const Dashboard = () => {
                 <CardContent>
                   <p>Account settings content goes here.</p>
                 </CardContent>
-              </Card>
+              </Card> */}
             </TabsContent>
           </Tabs>
         </div>
