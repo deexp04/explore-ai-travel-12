@@ -63,7 +63,7 @@ const ChatInterface = () => {
   };
 
   const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+    if (!inputMessage.trim() || isTyping) return;
 
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -76,28 +76,69 @@ const ChatInterface = () => {
     setInputMessage('');
     setIsTyping(true);
 
+    try {
+            // Send request to primary agent
+            await fetch('/api/send-request', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ input: inputText }),
+            });
+            // Start polling for response
+            startPollingForResponse();
+        } catch (error) {
+            handleError(error);
+        }
+
     // Simulate AI response with agent coordination
-    setTimeout(() => {
-      const responses = getAIResponse(inputMessage);
+    // setTimeout(() => {
+    //   const responses = getAIResponse(inputMessage);
       
-      responses.forEach((response, index) => {
-        setTimeout(() => {
-          const assistantMessage: ChatMessage = {
-            id: (Date.now() + index).toString(),
-            content: response.content,
-            sender: 'assistant',
-            timestamp: new Date(),
-            agentInfo: response.agentInfo
-          };
-          setMessages(prev => [...prev, assistantMessage]);
+    //   responses.forEach((response, index) => {
+    //     setTimeout(() => {
+    //       const assistantMessage: ChatMessage = {
+    //         id: (Date.now() + index).toString(),
+    //         content: response.content,
+    //         sender: 'assistant',
+    //         timestamp: new Date(),
+    //         agentInfo: response.agentInfo
+    //       };
+    //       setMessages(prev => [...prev, assistantMessage]);
           
-          if (index === responses.length - 1) {
-            setIsTyping(false);
-          }
-        }, index * 1500);
-      });
-    }, 1000);
+    //       if (index === responses.length - 1) {
+    //         setIsTyping(false);
+    //       }
+    //     }, index * 1500);
+    //   });
+    // }, 1000);
   };
+
+  const startPollingForResponse = () => {
+        const pollInterval = setInterval(async () => {
+            try {
+                const responseData = await fetch('/api/get-response');
+                const data = await responseData.json();
+
+                if (data.status !== 'waiting' && data.analysis_result) {
+                    clearInterval(pollInterval);
+                    setIsProcessing(false);
+
+                    // Process agent responses
+                    data.analysis_result.analysis.forEach(response => {
+                        setMessages(prev => [...prev, {
+                            type: 'agent',
+                            agentName: response.name || 'Agent',
+                            content: response.content,
+                            timestamp: new Date().toLocaleTimeString()
+                        }]);
+                    });
+                }
+            } catch (error) {
+                clearInterval(pollInterval);
+                setIsProcessing(false);
+                handleError(error);
+            }
+        }, 1000);
+    };
 
   const getAIResponse = (message: string): Array<{content: string, agentInfo?: {agentType: string, action: string}}> => {
     const lowerMessage = message.toLowerCase();
