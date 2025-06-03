@@ -5,12 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Plane, MapPin, Calendar, DollarSign, MessageSquare, Settings, LogOut, Navigation } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import MapView from '@/components/MapView';
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Dummy travel data with proper tuple coordinates
   const trips = [
@@ -40,6 +41,8 @@ const Dashboard = () => {
     }
   ];
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
@@ -50,29 +53,34 @@ const Dashboard = () => {
               <h1 className="text-xl sm:text-2xl font-bold text-white truncate">
                 TravelBud
               </h1>
-{/*               <Badge variant="outline" className="text-gray-400 border-gray-600">
-                Dashboard
-              </Badge> */}
             </div>
             <div className="flex items-center space-x-3 flex-shrink-0">
               <Button 
                 onClick={() => navigate('/chat')} 
-                className="text-white"
+                className={`text-white text-base px-4 py-2 relative ${
+                  isActive('/chat') ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-white' : ''
+                }`}
+                variant="ghost"
                 size="sm"
               >
+                <MessageSquare className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Chat Assistant</span>
               </Button>
               <Button 
                 onClick={() => navigate('/dashboard')} 
-                className="text-white"
+                className={`text-white text-base px-4 py-2 relative ${
+                  isActive('/dashboard') ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-white' : ''
+                }`}
+                variant="ghost"
                 size="sm"
               >
-{/*                 <MessageSquare className="h-4 w-4 mr-2" /> */}
+                <Navigation className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Dashboard</span>
               </Button>
               <Button 
                 onClick={logout} 
-                className="text-white border-gray-600"
+                className="text-white text-base px-4 py-2 hover:bg-red-600"
+                variant="ghost"
                 size="sm"
               >
                 <LogOut className="h-4 w-4" /> 
@@ -84,20 +92,6 @@ const Dashboard = () => {
       </header>
 
       <div className="container mx-auto px-4 max-w-7xl py-6">
-        {/* Welcome Section */}
-{/*         <Card className="mb-8 bg-gray-900 border-gray-800">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-xl sm:text-2xl font-bold text-white truncate">
-              Welcome back, {user?.name}!
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-sm sm:text-base text-gray-400">
-              Explore your travel dashboard and plan your next adventure with AI assistance.
-            </CardDescription>
-          </CardContent>
-        </Card> */}
-
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Map View */}

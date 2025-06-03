@@ -22,26 +22,26 @@ const MapView = ({ trips }: MapViewProps) => {
       <div className="absolute inset-0 flex items-center justify-center">
         <svg
           viewBox="0 0 1000 500"
-          className="w-full h-full opacity-20"
+          className="w-full h-full opacity-40 text-white"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* Simplified world map outline */}
           <path
             d="M150 200C200 150 250 140 300 160C350 180 400 170 450 190C500 210 550 200 600 220C650 240 700 230 750 250C800 270 850 260 900 280"
-            stroke="currentColor"
+            stroke="white"
             strokeWidth="2"
             fill="none"
           />
           <path
             d="M100 250C150 230 200 240 250 220C300 200 350 210 400 190C450 170 500 180 550 160C600 140 650 150 700 130"
-            stroke="currentColor"
+            stroke="white"
             strokeWidth="2"
             fill="none"
           />
           <path
             d="M80 300C130 280 180 290 230 270C280 250 330 260 380 240C430 220 480 230 530 210C580 190 630 200 680 180"
-            stroke="currentColor"
+            stroke="white"
             strokeWidth="2"
             fill="none"
           />
