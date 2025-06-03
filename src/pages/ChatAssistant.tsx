@@ -122,7 +122,7 @@ const ChatAssistant = () => {
                 Dashboard
               </Badge> */}
             </div>
-            <div className="flex items-center space-x-3 flex-shrink-0">
+            <div className="flex items-center space-x-3 flex-shrink-0 text-lg">
               <Button 
                 onClick={() => navigate('/chat')} 
                 className="text-white"
@@ -162,7 +162,7 @@ const ChatAssistant = () => {
                     <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
-                    <div className="flex-1 space-y-4 bg-gray-800">
+                    <div className="flex-1 space-y-4 bg-gray-800 rounded-2xl px-4 py-3">
                       <div className="text-gray-100 leading-relaxed whitespace-pre-wrap">
                         {message.content}
                       </div>
