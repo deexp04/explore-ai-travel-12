@@ -108,6 +108,8 @@ const ChatAssistant = () => {
     }
   };
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Header */}
