@@ -157,7 +157,7 @@ const Login = () => {
                 TravelBud
               </span>
             </div>
-            <p className="text-white-400 text-sm max-w-md mx-auto">
+            <p className="text-gray-400 text-sm max-w-md mx-auto">
               Your smart travel companion
             </p>
           </div>
