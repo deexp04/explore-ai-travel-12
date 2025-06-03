@@ -135,74 +135,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Call to Action Section - replacing chat demo */}
-      <section className="py-20 px-6 bg-white/70">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Ready to Start Planning?
-            </h2>
-
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                size="lg" 
-                onClick={() => navigate('/login')}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 h-auto text-lg"
-              >
-                Get Full Features
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-
-            </div>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <MessageSquare className="w-8 h-8" />
-                </div>
-                <CardTitle>Free Chat Assistant</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  Get instant travel suggestions and general advice without signing up
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8" />
-                </div>
-                <CardTitle>Personalized Experience</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  Sign up for detailed itineraries, trip history, and budget tracking
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8" />
-                </div>
-                <CardTitle>Smart Agent Network</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>
-                  Access coordinated AI agents for bookings, budget monitoring, and alerts
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section className="py-20 px-6">
         <div className="container mx-auto">
@@ -255,8 +187,6 @@ const Landing = () => {
         </div>
       </footer>
 
-      {/* Floating Chat Button */}
-      <FloatingChatButton />
     </div>
   );
 };
