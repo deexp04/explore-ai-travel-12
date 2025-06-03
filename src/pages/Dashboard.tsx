@@ -17,7 +17,7 @@ const Dashboard = () => {
     {
       id: 1,
       destination: 'Paris, France',
-      dates: 'Dec 15-22, 2024',
+      dates: 'July 15-22, 2025',
       budget: '2,500',
       status: 'Upcoming',
       coordinates: [2.3522, 48.8566] as [number, number] // Paris coordinates
@@ -25,7 +25,7 @@ const Dashboard = () => {
     {
       id: 2,
       destination: 'Tokyo, Japan',
-      dates: 'Mar 10-20, 2025',
+      dates: 'June 6-10, 2025',
       budget: '3,200',
       status: 'Planning',
       coordinates: [139.6917, 35.6895] as [number, number] // Tokyo coordinates
