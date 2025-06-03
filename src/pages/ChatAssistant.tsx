@@ -122,7 +122,7 @@ const ChatAssistant = () => {
                 Dashboard
               </Badge> */}
             </div>
-            <div className="flex items-center space-x-3 flex-shrink-0 text-lg">
+            <div className="flex items-center space-x-3 flex-shrink-0">
               <Button 
                 onClick={() => navigate('/chat')} 
                 className="text-white"
