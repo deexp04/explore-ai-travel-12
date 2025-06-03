@@ -153,15 +153,12 @@ const Login = () => {
         <div className="container mx-auto">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                <MapPin className="w-4 h-4 text-white" />
-              </div>
               <span className="text-xl font-bold text-white">
                 TravelBud
               </span>
             </div>
-            <p className="text-gray-400 text-sm max-w-md mx-auto">
-              Your AI-powered travel companion for intelligent trip planning and exploration.
+            <p className="text-white-400 text-sm max-w-md mx-auto">
+              Your smart travel companion
             </p>
           </div>
         </div>
