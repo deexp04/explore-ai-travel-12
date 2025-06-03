@@ -60,12 +60,18 @@ const Dashboard = () => {
                 className="text-white"
                 size="sm"
               >
-{/*                 <MessageSquare className="h-4 w-4 mr-2" /> */}
                 <span className="hidden sm:inline">Chat Assistant</span>
               </Button>
               <Button 
+                onClick={() => navigate('/dashboard')} 
+                className="text-white"
+                size="sm"
+              >
+{/*                 <MessageSquare className="h-4 w-4 mr-2" /> */}
+                <span className="hidden sm:inline">Dashboard</span>
+              </Button>
+              <Button 
                 onClick={logout} 
-                variant="outline"
                 className="text-white border-gray-600"
                 size="sm"
               >
@@ -79,7 +85,7 @@ const Dashboard = () => {
 
       <div className="container mx-auto px-4 max-w-7xl py-6">
         {/* Welcome Section */}
-        <Card className="mb-8 bg-gray-900 border-gray-800">
+{/*         <Card className="mb-8 bg-gray-900 border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-xl sm:text-2xl font-bold text-white truncate">
               Welcome back, {user?.name}!
@@ -90,7 +96,7 @@ const Dashboard = () => {
               Explore your travel dashboard and plan your next adventure with AI assistance.
             </CardDescription>
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
