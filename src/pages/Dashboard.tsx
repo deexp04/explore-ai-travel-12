@@ -99,12 +99,11 @@ const Dashboard = () => {
             <Card className="bg-gray-900 border-gray-800 h-[500px]">
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
-                  <Navigation className="mr-2 h-5 w-5" />
                   Travel Map
                 </CardTitle>
-                <CardDescription className="text-gray-400">
+{/*                 <CardDescription className="text-gray-400">
                   Your travel destinations and routes
-                </CardDescription>
+                </CardDescription> */}
               </CardHeader>
               <CardContent className="p-0 h-[400px]">
                 <MapView trips={trips} />
