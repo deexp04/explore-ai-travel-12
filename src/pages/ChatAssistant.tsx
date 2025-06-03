@@ -152,17 +152,17 @@ const ChatAssistant = () => {
       </header>
 
       {/* Chat Area */}
-      <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full">
+      <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full mt-2">
         <ScrollArea className="flex-1 px-6 py-8">
           <div className="space-y-8">
             {messages.map((message) => (
               <div key={message.id} className="space-y-4">
                 {message.sender === 'assistant' && (
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
-                    <div className="flex-1 space-y-4">
+                    <div className="flex-1 space-y-4 bg-gray-800">
                       <div className="text-gray-100 leading-relaxed whitespace-pre-wrap">
                         {message.content}
                       </div>
@@ -196,7 +196,7 @@ const ChatAssistant = () => {
                     </div>
                     <Avatar className="w-8 h-8 flex-shrink-0">
                       <AvatarFallback className="bg-gray-600 text-white">
-                        <User className="w-4 h-4" />
+                        <Sparkles className="w-4 h-4 text-white" />
                       </AvatarFallback>
                     </Avatar>
                   </div>
@@ -206,7 +206,7 @@ const ChatAssistant = () => {
             
             {isTyping && (
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <div className="bg-gray-800 rounded-2xl px-4 py-3">
