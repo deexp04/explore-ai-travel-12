@@ -16,25 +16,25 @@ const Landing = () => {
       icon: MessageSquare,
       title: 'AI Travel Assistant',
       description: 'Chat with our intelligent assistant to plan your perfect trip',
-      color: 'bg-gray-800 text-blue-400'
+      color: 'bg-gray-800 text-white'
     },
     {
       icon: Plane,
       title: 'Smart Booking',
       description: 'Discover the best flights, hotels, and activities through our agent network',
-      color: 'bg-gray-800 text-purple-400'
+      color: 'bg-gray-700 text-gray-200'
     },
     {
       icon: Shield,
       title: 'Budget Monitoring',
       description: 'Real-time cost tracking with smart suggestions to stay within budget',
-      color: 'bg-gray-800 text-green-400'
+      color: 'bg-gray-600 text-gray-100'
     },
     {
       icon: Zap,
       title: 'Smart Alerts',
       description: 'Get notified about better deals and budget-friendly alternatives',
-      color: 'bg-gray-800 text-orange-400'
+      color: 'bg-gray-900 text-white'
     }
   ];
 
