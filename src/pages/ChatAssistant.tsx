@@ -111,33 +111,42 @@ const ChatAssistant = () => {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 border-b border-gray-800">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-semibold">TravelBud</h1>
-          <Badge variant="outline" className="text-gray-400 border-gray-600">
-            2.5 Flash
-          </Badge>
-        </div>
-        <div className="flex items-center space-x-3">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => navigate('/dashboard')}
-            className="text-white border-gray-600 hover:bg-gray-800"
-          >
-            <MapPin className="w-4 h-4 mr-2" />
-            Dashboard
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={logout}
-            className="text-white border-gray-600 hover:bg-gray-800"
-          >
-            <LogOut className="w-4 h-4" />
-          </Button>
-          <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-            <span className="text-black text-sm font-bold">😊</span>
+      <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4 min-w-0">
+              <h1 className="text-xl sm:text-2xl font-bold text-white truncate">
+                TravelBud
+              </h1>
+{/*               <Badge variant="outline" className="text-gray-400 border-gray-600">
+                Dashboard
+              </Badge> */}
+            </div>
+            <div className="flex items-center space-x-3 flex-shrink-0">
+              <Button 
+                onClick={() => navigate('/chat')} 
+                className="text-white"
+                size="sm"
+              >
+                <span className="hidden sm:inline">Chat Assistant</span>
+              </Button>
+              <Button 
+                onClick={() => navigate('/dashboard')} 
+                className="text-white"
+                size="sm"
+              >
+{/*                 <MessageSquare className="h-4 w-4 mr-2" /> */}
+                <span className="hidden sm:inline">Dashboard</span>
+              </Button>
+              <Button 
+                onClick={logout} 
+                className="text-white border-gray-600"
+                size="sm"
+              >
+                <LogOut className="h-4 w-4" /> 
+                <span className="hidden sm:inline ml-2">Logout</span>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
