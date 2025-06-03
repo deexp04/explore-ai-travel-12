@@ -170,18 +170,16 @@ const Landing = () => {
      
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-6">
+      <footer className="bg-gray-900 text-white py-8 px-6 border-t border-gray-800">
         <div className="container mx-auto">
           <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  SyncAgents
-                </span>
-              </div>
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <span className="text-xl font-bold text-white">
+                TravelBud
+              </span>
             </div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Pioneering the future of intelligent travel planning through advanced AI agent networks and innovation.
+            <p className="text-white-400 text-sm max-w-md mx-auto">
+              Your smart travel companion
             </p>
           </div>
         </div>
