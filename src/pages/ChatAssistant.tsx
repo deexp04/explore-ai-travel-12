@@ -236,12 +236,6 @@ const ChatAssistant = () => {
                 />
               </div>
               <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:bg-gray-800">
-                  Deep Research
-                </Button>
-                <Button variant="ghost" size="sm" className="text-gray-400 hover:bg-gray-800">
-                  Canvas
-                </Button>
                 <Button
                   onClick={handleSendMessage}
                   disabled={!inputMessage.trim() || isTyping}
@@ -253,8 +247,8 @@ const ChatAssistant = () => {
               </div>
             </div>
           </Card>
-          <p className="text-center text-gray-500 text-sm mt-2">
-            TravelBud can make mistakes, so double-check it
+          <p className="text-center text-gray-500 text-sm mt-3">
+            TravelBud - Your smart travel companion
           </p>
         </div>
       </div>
