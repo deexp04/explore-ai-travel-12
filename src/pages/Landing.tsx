@@ -115,7 +115,7 @@ const Landing = () => {
             >
               <Button 
                 size="sm" 
-                className="bg-white text-black hover:bg-gray-200 text-base px-12 py-6 h-auto font-semibold shadow-2xl"
+                className="bg-white text-black hover:bg-gray-200 text-base px-8 py-4 h-auto font-semibold shadow-2xl"
                 onClick={() => navigate('/login')}
               >
                 Start Planning Now
