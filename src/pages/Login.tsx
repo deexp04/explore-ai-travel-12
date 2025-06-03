@@ -68,18 +68,18 @@ const Login = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+{/*               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                 <MapPin className="w-5 h-5 text-white" />
-              </div>
+              </div> */}
               <span className="text-2xl font-bold text-white">
                 TravelBud
               </span>
             </div>
-            <div className="flex items-center space-x-3">
+{/*             <div className="flex items-center space-x-3">
               <Button onClick={() => navigate('/register')} variant="outline" className="text-white border-gray-600 hover:bg-gray-800">
                 Sign Up
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
@@ -89,22 +89,18 @@ const Login = () => {
           <Card className="bg-gray-900 border-gray-800 shadow-xl">
             <CardHeader className="text-center">
               <CardTitle className="text-white">Sign In</CardTitle>
-              <CardDescription className="text-gray-400">
-                Login for intelligent travel planning
-              </CardDescription>
             </CardHeader>
             <CardContent>
               {/* Demo Login Button */}
               <div className="mb-6">
                 <Button 
                   onClick={handleDemoLogin}
-                  variant="outline"
-                  className="w-full mb-4 border-blue-600 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400"
+                  className="w-full mb-4 border-gray-600 bg-gray-600/10 hover:bg-gray-600/20 text-white"
                   disabled={isLoading}
                 >
-                  🚀 Try Demo Login
+                  Try Demo Login
                 </Button>
-                <div className="relative">
+{/*                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t border-gray-700" />
                   </div>
@@ -113,7 +109,7 @@ const Login = () => {
                       Or continue with
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -141,7 +137,7 @@ const Login = () => {
                 </div>
                 <Button 
                   type="submit" 
-                  className="w-full bg-blue-600 hover:bg-blue-700" 
+                  className="w-full bg-gray-800 text-white hover:bg-blue-700 mt-2 p-2" 
                   disabled={isLoading}
                 >
                   {isLoading ? 'Signing In...' : 'Sign In'}
