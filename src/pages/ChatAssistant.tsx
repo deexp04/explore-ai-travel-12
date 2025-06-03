@@ -118,29 +118,32 @@ const ChatAssistant = () => {
               <h1 className="text-xl sm:text-2xl font-bold text-white truncate">
                 TravelBud
               </h1>
-{/*               <Badge variant="outline" className="text-gray-400 border-gray-600">
-                Dashboard
-              </Badge> */}
             </div>
             <div className="flex items-center space-x-3 flex-shrink-0">
               <Button 
                 onClick={() => navigate('/chat')} 
-                className="text-white"
+                className={`text-white text-base px-4 py-2 relative ${
+                  isActive('/chat') ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-white' : ''
+                }`}
+                variant="ghost"
                 size="sm"
               >
                 <span className="hidden sm:inline">Chat Assistant</span>
               </Button>
               <Button 
                 onClick={() => navigate('/dashboard')} 
-                className="text-white"
+                className={`text-white text-base px-4 py-2 relative ${
+                  isActive('/dashboard') ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-white' : ''
+                }`}
+                variant="ghost"
                 size="sm"
               >
-{/*                 <MessageSquare className="h-4 w-4 mr-2" /> */}
                 <span className="hidden sm:inline">Dashboard</span>
               </Button>
               <Button 
                 onClick={logout} 
-                className="text-white border-gray-600"
+                className="text-white text-base px-4 py-2 hover:bg-white"
+                variant="ghost"
                 size="sm"
               >
                 <LogOut className="h-4 w-4" /> 
