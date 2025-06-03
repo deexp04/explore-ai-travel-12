@@ -47,7 +47,7 @@ const Landing = () => {
             <div className="flex items-center space-x-3">
               <div>
                 <span className="text-2xl font-bold text-white">
-                  Travel bud
+                  TravelBud
                 </span>
               </div>
             </div>
@@ -93,7 +93,7 @@ const Landing = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-4xl lg:text-4xl font-bold text-white mb-8 leading-tight"
             >
-              Travel bud
+              TravelBud
             </motion.h1>
 
             {/* Subtitle */}
@@ -180,7 +180,7 @@ const Landing = () => {
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-4">
               <span className="text-xl font-bold text-white">
-                Travel bud
+                TravelBud
               </span>
             </div>
             <p className="text-gray-400 text-sm max-w-md mx-auto">
