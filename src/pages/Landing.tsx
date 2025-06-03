@@ -65,7 +65,7 @@ const Landing = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Content */}
             <div className="max-w-2xl">
-              <div className="inline-flex items-center px-4 py-2 bg-gray-800 rounded-full text-blue-400 text-sm font-medium mb-6">
+              <div className="inline-flex items-center px-4 py-2 bg-gray-800 rounded-full text-white-400 text-sm font-medium mb-6">
                 <Zap className="w-4 h-4 mr-2" />
                 Powered by FetchAI
               </div>
@@ -137,7 +137,7 @@ const Landing = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6">
+      <section className="pb-20 px-6">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
