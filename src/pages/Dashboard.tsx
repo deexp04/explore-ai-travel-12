@@ -63,7 +63,6 @@ const Dashboard = () => {
                 variant="ghost"
                 size="sm"
               >
-                <MessageSquare className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Chat Assistant</span>
               </Button>
               <Button 
@@ -74,12 +73,11 @@ const Dashboard = () => {
                 variant="ghost"
                 size="sm"
               >
-                <Navigation className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Dashboard</span>
               </Button>
               <Button 
                 onClick={logout} 
-                className="text-white text-base px-4 py-2 hover:bg-red-600"
+                className="text-white text-base px-4 py-2 hover:bg-white"
                 variant="ghost"
                 size="sm"
               >
