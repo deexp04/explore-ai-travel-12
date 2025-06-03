@@ -159,7 +159,7 @@ const ChatAssistant = () => {
               <div key={message.id} className="space-y-4">
                 {message.sender === 'assistant' && (
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1 space-y-4">
@@ -206,7 +206,7 @@ const ChatAssistant = () => {
             
             {isTyping && (
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <div className="bg-gray-800 rounded-2xl px-4 py-3">
