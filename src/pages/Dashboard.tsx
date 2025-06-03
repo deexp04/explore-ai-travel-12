@@ -18,7 +18,7 @@ const Dashboard = () => {
       id: 1,
       destination: 'Paris, France',
       dates: 'Dec 15-22, 2024',
-      budget: '$2,500',
+      budget: '2,500',
       status: 'Upcoming',
       coordinates: [2.3522, 48.8566] as [number, number] // Paris coordinates
     },
@@ -26,7 +26,7 @@ const Dashboard = () => {
       id: 2,
       destination: 'Tokyo, Japan',
       dates: 'Mar 10-20, 2025',
-      budget: '$3,200',
+      budget: '3,200',
       status: 'Planning',
       coordinates: [139.6917, 35.6895] as [number, number] // Tokyo coordinates
     },
@@ -34,7 +34,7 @@ const Dashboard = () => {
       id: 3,
       destination: 'New York, USA',
       dates: 'Aug 5-12, 2024',
-      budget: '$1,800',
+      budget: '1,800',
       status: 'Completed',
       coordinates: [-74.0060, 40.7128] as [number, number] // NYC coordinates
     }
@@ -132,8 +132,8 @@ const Dashboard = () => {
                         trip.status === 'Completed' 
                           ? 'bg-green-600 text-white' 
                           : trip.status === 'Upcoming'
-                          ? 'bg-blue-600 text-white'
-                          : 'text-gray-400 border-gray-600'
+                          ? 'bg-red-600 text-white'
+                          : 'bg-blue-600 text-white'
                       }`}
                     >
                       {trip.status}
@@ -174,7 +174,7 @@ const Dashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-400">Countries Visited</p>
-                  <p className="text-2xl font-bold text-white">3</p>
+                  <p className="text-2xl font-bold text-white">1</p>
                 </div>
                 <MapPin className="h-8 w-8 text-green-600" />
               </div>
@@ -186,7 +186,7 @@ const Dashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-400">Total Budget</p>
-                  <p className="text-2xl font-bold text-white">$7,500</p>
+                  <p className="text-2xl font-bold text-white">7,500</p>
                 </div>
                 <DollarSign className="h-8 w-8 text-yellow-600" />
               </div>
