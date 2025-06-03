@@ -12,7 +12,7 @@ const Dashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  // Dummy travel data
+  // Dummy travel data with proper tuple coordinates
   const trips = [
     {
       id: 1,
@@ -20,7 +20,7 @@ const Dashboard = () => {
       dates: 'Dec 15-22, 2024',
       budget: '$2,500',
       status: 'Upcoming',
-      coordinates: [2.3522, 48.8566] // Paris coordinates
+      coordinates: [2.3522, 48.8566] as [number, number] // Paris coordinates
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const Dashboard = () => {
       dates: 'Mar 10-20, 2025',
       budget: '$3,200',
       status: 'Planning',
-      coordinates: [139.6917, 35.6895] // Tokyo coordinates
+      coordinates: [139.6917, 35.6895] as [number, number] // Tokyo coordinates
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const Dashboard = () => {
       dates: 'Aug 5-12, 2024',
       budget: '$1,800',
       status: 'Completed',
-      coordinates: [-74.0060, 40.7128] // NYC coordinates
+      coordinates: [-74.0060, 40.7128] as [number, number] // NYC coordinates
     }
   ];
 
