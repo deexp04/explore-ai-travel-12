@@ -33,15 +33,39 @@ const ChatAssistant = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Load messages from session storage on component mount
   useEffect(() => {
-    // Add welcome message
+    const savedMessages = sessionStorage.getItem('chatMessages');
+    if (savedMessages) {
+      try {
+        const parsedMessages = JSON.parse(savedMessages);
+        setMessages(parsedMessages);
+      } catch (error) {
+        console.error('Error parsing saved messages:', error);
+        // If parsing fails, start with welcome message
+        initializeWelcomeMessage();
+      }
+    } else {
+      // No saved messages, initialize with welcome message
+      initializeWelcomeMessage();
+    }
+  }, []);
+
+  // Save messages to session storage whenever messages change
+  useEffect(() => {
+    if (messages.length > 0) {
+      sessionStorage.setItem('chatMessages', JSON.stringify(messages));
+    }
+  }, [messages]);
+
+  const initializeWelcomeMessage = () => {
     const welcomeMessage: ChatMessage = {
       type: 'assistant',
       content: `Welcome to TravelBud! Is there anything I can help you with?`,
       timestamp: new Date().toLocaleTimeString()
     };
     setMessages([welcomeMessage]);
-  }, []);
+  };
 
   useEffect(() => {
     scrollToBottom();
@@ -61,6 +85,7 @@ const ChatAssistant = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputMessage;
     setInputMessage('');
     setIsTyping(true);
 
@@ -68,80 +93,43 @@ const ChatAssistant = () => {
         const response = await fetch('http://127.0.0.1:8000/send-query', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: inputMessage }),
+            body: JSON.stringify({ text: currentInput }),
         });
 
-        const data = await response.json()
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-        if (data.status === 200){
+        const data = await response.json();
+
+        if (data.status === 200 && data.content) {
           setMessages(prev => [...prev, {
             type: 'agent',
             agentName: data.name || 'Agent',
             content: data.content,
             timestamp: new Date().toLocaleTimeString()
           }]);
-        }
-        else{
+        } else {
+          // Handle case where status is not 200 or no content
           setMessages(prev => [...prev, {
             type: 'agent',
-            agentName: data.name || 'Agent',
-            content: `Error receiving response from agent`,
+            agentName: 'System',
+            content: `Error: ${data.message || 'No response received from agent'}`,
             timestamp: new Date().toLocaleTimeString()
           }]);
         }
-        setIsTyping(false);
                     
     } catch (error) {
-          setMessages(prev => [...prev, {
-            type: 'agent',
-            agentName: 'Agent',
-            content: `Connection error: ${String(error)}`,
-            timestamp: new Date().toLocaleTimeString()
-          }]);
+        console.error('Chat error:', error);
+        setMessages(prev => [...prev, {
+          type: 'agent',
+          agentName: 'System',
+          content: `Connection error: Unable to reach the agent. Please check your connection and try again.`,
+          timestamp: new Date().toLocaleTimeString()
+        }]);
+    } finally {
+        setIsTyping(false);
     }
-
-    // Simulate AI response
-    // setTimeout(() => {
-    //   const response = getTravelResponse(inputMessage);
-    //   setMessages(prev => [...prev, {
-    //     type: 'agent',
-    //     agentName: response.name || 'Agent',
-    //     content: response.content,
-    //     timestamp: new Date().toLocaleTimeString()
-    //   }]);
-    //   setIsTyping(false);
-    // }, 1500);
-
-  };
-
-    const getTravelResponse = (message: string): {content: string, name?: string} => {
-      const lowerMessage = message.toLowerCase();
-      
-      if (lowerMessage.includes('paris') || lowerMessage.includes('france')) {
-        return {
-          content: "🗼 Paris is an amazing destination! I'd recommend visiting the Eiffel Tower at sunset, exploring the Louvre Museum, and taking a Seine river cruise. The best time to visit is spring (April-June) or fall (September-November). Would you like specific recommendations for hotels or restaurants?",
-          name: "Travel Guide"
-        };
-      }
-      
-      if (lowerMessage.includes('budget') || lowerMessage.includes('cheap')) {
-        return {
-          content: "💰 I can help you plan a budget-friendly trip! Consider traveling during off-season, booking accommodations in advance, using public transportation, and eating at local markets. What's your approximate budget and destination?",
-          name: "Budget Advisor"
-        };
-      }
-      
-      if (lowerMessage.includes('tokyo') || lowerMessage.includes('japan')) {
-        return {
-          content: "🏯 Tokyo is incredible! Must-visit spots include Shibuya Crossing, Senso-ji Temple, Tsukiji Outer Market, and Mount Fuji day trip. Try authentic ramen, sushi, and visit during cherry blossom season (March-May) for the best experience. Need help with specific districts or activities?",
-          name: "Japan Expert"
-        };
-      }
-      
-      return {
-        content: "I'd be happy to help you plan your travel adventure! Whether you need destination recommendations, budget planning, itinerary suggestions, or local tips, I'm here to assist. What kind of trip are you thinking about?",
-        name: "Travel Assistant"
-      };
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
