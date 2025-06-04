@@ -22,10 +22,9 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 interface ChatMessage {
-  id: string;
+  type: 'user' | 'assistant';
   content: string;
-  sender: 'user' | 'assistant';
-  timestamp: Date;
+  timestamp: string;
 }
 
 const ChatAssistant = () => {
@@ -39,10 +38,9 @@ const ChatAssistant = () => {
   useEffect(() => {
     // Add welcome message
     const welcomeMessage: ChatMessage = {
-      id: '1',
+      type: 'assistant',
       content: `Hello! How are you doing today in your travel planning? Is there anything I can help you with?`,
-      sender: 'assistant',
-      timestamp: new Date()
+      timestamp: new Date().toLocaleTimeString()
     };
     setMessages([welcomeMessage]);
   }, []);
@@ -59,10 +57,9 @@ const ChatAssistant = () => {
     if (!inputMessage.trim() || isTyping) return;
 
     const userMessage: ChatMessage = {
-      id: Date.now().toString(),
+      type: 'user',
       content: inputMessage,
-      sender: 'user',
-      timestamp: new Date()
+      timestamp: new Date().toLocaleTimeString()
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -73,10 +70,9 @@ const ChatAssistant = () => {
     setTimeout(() => {
       const response = getTravelResponse(inputMessage);
       const assistantMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
+        type: 'assistant',
         content: response,
-        sender: 'assistant',
-        timestamp: new Date()
+        timestamp: new Date().toLocaleTimeString()
       };
       setMessages(prev => [...prev, assistantMessage]);
       setIsTyping(false);
@@ -160,9 +156,9 @@ const ChatAssistant = () => {
       <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full mt-2">
         <ScrollArea className="flex-1 px-6 py-8">
           <div className="space-y-8">
-            {messages.map((message) => (
-              <div key={message.id} className="space-y-4">
-                {message.sender === 'assistant' && (
+            {messages.map((message, index) => (
+              <div key={index} className="space-y-4">
+                {message.type === 'assistant' && (
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-4 h-4 text-white" />
@@ -192,7 +188,7 @@ const ChatAssistant = () => {
                   </div>
                 )}
                 
-                {message.sender === 'user' && (
+                {message.type === 'user' && (
                   <div className="flex items-start space-x-4 justify-end">
                     <div className="bg-gray-800 rounded-2xl px-4 py-3 max-w-2xl">
                       <div className="text-gray-100 leading-relaxed">
