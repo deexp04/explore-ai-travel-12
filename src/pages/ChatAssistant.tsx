@@ -22,9 +22,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 interface ChatMessage {
-  type: 'user' | 'assistant';
+  type: 'user' | 'assistant' | 'agent';
   content: string;
   timestamp: string;
+  agentName?: string;
 }
 
 const ChatAssistant = () => {
@@ -69,32 +70,44 @@ const ChatAssistant = () => {
     // Simulate AI response
     setTimeout(() => {
       const response = getTravelResponse(inputMessage);
-      const assistantMessage: ChatMessage = {
-        type: 'assistant',
-        content: response,
+      setMessages(prev => [...prev, {
+        type: 'agent',
+        agentName: response.name || 'Agent',
+        content: response.content,
         timestamp: new Date().toLocaleTimeString()
-      };
-      setMessages(prev => [...prev, assistantMessage]);
+      }]);
       setIsTyping(false);
     }, 1500);
   };
 
-  const getTravelResponse = (message: string): string => {
+  const getTravelResponse = (message: string): {content: string, name?: string} => {
     const lowerMessage = message.toLowerCase();
     
     if (lowerMessage.includes('paris') || lowerMessage.includes('france')) {
-      return "🗼 Paris is an amazing destination! I'd recommend visiting the Eiffel Tower at sunset, exploring the Louvre Museum, and taking a Seine river cruise. The best time to visit is spring (April-June) or fall (September-November). Would you like specific recommendations for hotels or restaurants?";
+      return {
+        content: "🗼 Paris is an amazing destination! I'd recommend visiting the Eiffel Tower at sunset, exploring the Louvre Museum, and taking a Seine river cruise. The best time to visit is spring (April-June) or fall (September-November). Would you like specific recommendations for hotels or restaurants?",
+        name: "Travel Guide"
+      };
     }
     
     if (lowerMessage.includes('budget') || lowerMessage.includes('cheap')) {
-      return "💰 I can help you plan a budget-friendly trip! Consider traveling during off-season, booking accommodations in advance, using public transportation, and eating at local markets. What's your approximate budget and destination?";
+      return {
+        content: "💰 I can help you plan a budget-friendly trip! Consider traveling during off-season, booking accommodations in advance, using public transportation, and eating at local markets. What's your approximate budget and destination?",
+        name: "Budget Advisor"
+      };
     }
     
     if (lowerMessage.includes('tokyo') || lowerMessage.includes('japan')) {
-      return "🏯 Tokyo is incredible! Must-visit spots include Shibuya Crossing, Senso-ji Temple, Tsukiji Outer Market, and Mount Fuji day trip. Try authentic ramen, sushi, and visit during cherry blossom season (March-May) for the best experience. Need help with specific districts or activities?";
+      return {
+        content: "🏯 Tokyo is incredible! Must-visit spots include Shibuya Crossing, Senso-ji Temple, Tsukiji Outer Market, and Mount Fuji day trip. Try authentic ramen, sushi, and visit during cherry blossom season (March-May) for the best experience. Need help with specific districts or activities?",
+        name: "Japan Expert"
+      };
     }
     
-    return "I'd be happy to help you plan your travel adventure! Whether you need destination recommendations, budget planning, itinerary suggestions, or local tips, I'm here to assist. What kind of trip are you thinking about?";
+    return {
+      content: "I'd be happy to help you plan your travel adventure! Whether you need destination recommendations, budget planning, itinerary suggestions, or local tips, I'm here to assist. What kind of trip are you thinking about?",
+      name: "Travel Assistant"
+    };
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -158,12 +171,17 @@ const ChatAssistant = () => {
           <div className="space-y-8">
             {messages.map((message, index) => (
               <div key={index} className="space-y-4">
-                {message.type === 'assistant' && (
+                {(message.type === 'assistant' || message.type === 'agent') && (
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1 space-y-4 bg-gray-800 rounded-2xl px-4 py-3">
+                      {message.agentName && (
+                        <div className="text-sm text-gray-400 font-medium">
+                          {message.agentName}
+                        </div>
+                      )}
                       <div className="text-gray-100 leading-relaxed whitespace-pre-wrap">
                         {message.content}
                       </div>
